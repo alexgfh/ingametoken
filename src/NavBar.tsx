@@ -22,10 +22,7 @@ function NavBar() {
     <div>
       {coin ? (
         <div className="CoinInfo">
-          <p>CoinName: {name ?? "Loading..."}</p>
-          <p>Owner: {coin.Owner}</p>
-          <p>MintAddress: {coin.Mint}</p>
-          <p>Supply: {supply ?? "Loading..."}</p>
+          <p>Current Supply: {supply ?? "Loading..."}</p>
         </div>
       ) : (
         <></>
