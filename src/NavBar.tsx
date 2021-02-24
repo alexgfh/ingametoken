@@ -29,13 +29,13 @@ function NavBar() {
       )}
       <ul className="NavBar">
         <a className="NavBarElement" onClick={() => history.push("concept")}>
-          Concept
+          Tutorial
         </a>
         <a className="NavBarElement" onClick={() => history.push("burn")}>
           Burn
         </a>
         <a className="NavBarElement" onClick={() => history.push("")}>
-          Create new
+          Create New
         </a>
       </ul>
     </div>

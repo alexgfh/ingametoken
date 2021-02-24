@@ -4,6 +4,9 @@ import "./browserclient.js";
 import NavBar from "./NavBar";
 
 function Burn() {
+  const storage = localStorage.getItem("coin");
+  const coin = storage ? JSON.parse(storage) : null;
+  const secret = "mysecrethash";
   return (
     <div className="Header">
       <NavBar />
@@ -34,6 +37,17 @@ function Burn() {
           of creatures in-game, i.e.: if a creature yields 10 tokens. Only spawn
           it for every 10 tokens burned in-server.
         </p>
+      </div>
+      <div className="Instructions">
+        <p>
+          Implement transfers from your game by making this POST call somewhere
+          such as a trading menu or in a merchant NPC dialogue, after{" "}
+          <b>deleting</b> <code>{"<AMOUNT>"}</code> from the player:
+        </p>
+        <code>
+          https://ingamecoin.xyz/minttoken?hash={secret}&solAddress={coin.Owner}
+          &mint={coin.Mint}&amount={"<AMOUNT>"}
+        </code>
       </div>
     </div>
   );
