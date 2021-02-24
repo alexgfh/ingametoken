@@ -2,5 +2,13 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
+  padding-left: 100px;
+}
+
+.Concept p {
+  padding: 3px;
+  background-color: lightgreen;
+  border: 2px solid green;
+  width: 20em;
 }

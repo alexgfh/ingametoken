@@ -17,6 +17,10 @@
   background-color: lightblue;
 }
 
+.CoinInfo {
+  margin-left: 0.5em;
+}
+
 .NavBarElement:hover {
   background-color: lightcoral;
 }
