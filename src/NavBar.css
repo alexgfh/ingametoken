@@ -1,0 +1,22 @@
+.NavBar {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 10em;
+  border: 1px solid red;
+}
+
+.NavBarElement {
+  user-select: none;
+  color: black;
+  border: 3px solid navy;
+  margin: 1em;
+  padding: 0.2em;
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+.NavBarElement:hover {
+  background-color: lightcoral;
+}

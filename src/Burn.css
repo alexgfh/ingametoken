@@ -1,0 +1,40 @@
+.Create {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.Input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1em;
+}
+
+input {
+  margin: 0.5em;
+}
+
+.Button {
+  user-select: none;
+  color: black;
+  border: 3px solid navy;
+  margin: 1em;
+  height: fit-content;
+  padding: 0.2em;
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+.Button:hover {
+  background-color: lightcoral;
+}

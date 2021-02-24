@@ -1,0 +1,31 @@
+.Create {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.Button {
+  user-select: none;
+  color: black;
+  border: 3px solid navy;
+  margin: 1em;
+  padding: 0.2em;
+  cursor: pointer;
+  background-color: lightblue;
+}
+.CreatedText {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Button:hover {
+  background-color: lightcoral;
+}
