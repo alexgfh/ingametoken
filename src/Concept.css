@@ -20,3 +20,9 @@
   background-color: lightgray;
   border: 2px solid black;
 }
+
+.Instructions div {
+  border: 2px solid black;
+  background-color: lightgray;
+  padding: 2px;
+}

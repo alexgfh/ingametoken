@@ -44,10 +44,13 @@ function Burn() {
           such as a trading menu or in a merchant NPC dialogue, after{" "}
           <b>deleting</b> <code>{"<AMOUNT>"}</code> from the player:
         </p>
-        <code>
-          https://ingamecoin.xyz/minttoken?hash={secret}&solAddress={coin.Owner}
-          &mint={coin.Mint}&amount={"<AMOUNT>"}
-        </code>
+        <div>
+          <code>
+            https://ingamecoin.xyz/minttoken?hash={secret}&solAddress=
+            {coin.Owner}
+            &mint={coin.Mint}&amount={"<AMOUNT>"}
+          </code>
+        </div>
       </div>
     </div>
   );
