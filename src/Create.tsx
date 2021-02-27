@@ -32,10 +32,8 @@ function Create() {
     let key = generateUUID();
     key = "mysecrethash";
     setKey(key);
-    navigator.clipboard.writeText(key);
-    localStorage.setItem("key", key);
     tokenClient
-      .createCoin(key)
+      .createCoin()
       .then((data) => localStorage.setItem("coin", JSON.stringify(data)));
   }
 

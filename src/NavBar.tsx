@@ -12,10 +12,12 @@ function NavBar() {
   let storage = localStorage.getItem("coin");
   let coin = storage ? JSON.parse(storage) : null;
   useEffect(() => {
-    tokenClient.coinInfo(coin.Mint).then((info) => {
-      setSupply(info.Supply);
-      setName("My Coin Name");
-    });
+    if (coin) {
+      tokenClient.coinInfo(coin.Mint).then((info) => {
+        setSupply(info.Supply);
+        setName("My Coin Name");
+      });
+    }
   });
 
   return (

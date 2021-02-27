@@ -6,23 +6,20 @@
   padding-left: 100px;
 }
 
-.Concept p,
-.Instructions p {
-  padding: 3px;
+.Concept p {
+  padding: 0.2em;
   background-color: lightgreen;
   border: 2px solid green;
   width: 22em;
   margin-right: 3em;
 }
 
-.Instructions p {
-  padding: 3px;
-  background-color: lightgray;
-  border: 2px solid black;
-}
-
-.Instructions div {
+.Instructions > div,
+.Instructions > p {
+  padding: 0.2em;
+  width: 32em;
   border: 2px solid black;
   background-color: lightgray;
-  padding: 2px;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }

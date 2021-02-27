@@ -3,15 +3,21 @@ import logo from "./logo.svg";
 import "./NavBar.css";
 import "./Burn.css";
 import "./Create.css";
-import "./browserclient.js";
+import tokenClient from "./browserclient.js";
 import NavBar from "./NavBar";
 
 function Create() {
-  let [key, setKey] = useState("");
+  const storage = localStorage.getItem("coin");
+  const coin = storage ? JSON.parse(storage) : null;
+  const secret = coin ? coin.Secret : "";
+  let [key, setKey] = useState(secret ?? "");
   let [amount, setAmount] = useState(0);
 
   function burnToken() {
-    alert("burned " + amount + " from " + key);
+    let cinfo = { Secret: key };
+    tokenClient
+      .burnCoin(cinfo, amount)
+      .then((data) => alert("burned " + amount));
   }
 
   return (

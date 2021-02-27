@@ -6,7 +6,8 @@ import NavBar from "./NavBar";
 function Burn() {
   const storage = localStorage.getItem("coin");
   const coin = storage ? JSON.parse(storage) : null;
-  const secret = "mysecrethash";
+  const secret = coin.Secret;
+  const mintAddress = coin.Mint;
   return (
     <div className="Header">
       <NavBar />
@@ -40,15 +41,32 @@ function Burn() {
       </div>
       <div className="Instructions">
         <p>
-          Implement transfers from your game by making this POST call somewhere
-          such as a trading menu or in a merchant NPC dialogue, after{" "}
-          <b>deleting</b> <code>{"<AMOUNT>"}</code> from the player:
+          Implement transfers from your game by making a POST call to the
+          following URL, at some point such as a trading menu or in a merchant
+          NPC dialogue, after{" "}
+          <b>
+            deleting <code>{"<AMOUNT>"}</code>
+          </b>{" "}
+          from the player:
         </p>
         <div>
+          <code>https://ingamecoin.xyz/minttoken</code>
+        </div>
+        <span>With the following parameters:</span>
+        <div>
+          <code>hash={secret}</code>
+        </div>
+        <div>
+          <code>mint={mintAddress}</code>
+        </div>
+        <div>
           <code>
-            https://ingamecoin.xyz/minttoken?hash={secret}&solAddress=
-            {coin.Owner}
-            &mint={coin.Mint}&amount={"<AMOUNT>"}
+            solAddress=<strong>{"<WITHDRAWAL ADDRESS>"}</strong>
+          </code>
+        </div>
+        <div>
+          <code>
+            amount=<strong>{"<AMOUNT>"}</strong>
           </code>
         </div>
       </div>
