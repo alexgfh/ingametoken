@@ -1,4 +1,4 @@
-let serverip = "https://ingamecoin.xyz/";
+let serverip = "https://api.ingamecoin.xyz/";
 function createCoin() {
   return fetch(serverip + "createtoken", {
     headers: { "content-type": "application/json" },
