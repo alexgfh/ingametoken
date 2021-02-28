@@ -10,14 +10,20 @@ function Create() {
   const storage = localStorage.getItem("coin");
   const coin = storage ? JSON.parse(storage) : null;
   const secret = coin ? coin.Secret : "";
+  const decimals = coin ? coin.Decimals : 6;
   let [key, setKey] = useState(secret ?? "");
+  let [trigger, setTrigger] = useState(false); // crazy hack to redraw NavBar supply
   let [amount, setAmount] = useState(0);
 
   function burnToken() {
-    let cinfo = { Secret: key };
+    let cinfo = { Secret: key, Decimals: decimals };
     tokenClient
       .burnCoin(cinfo, amount)
-      .then((data) => alert("burned " + amount));
+      .then((data) => {
+        setTrigger(!trigger);
+        alert("burned " + amount);
+      })
+      .catch(() => alert("failed to burn"));
   }
 
   return (

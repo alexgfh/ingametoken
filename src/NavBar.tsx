@@ -6,8 +6,7 @@ import tokenClient from "./browserclient.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function NavBar() {
-  let [supply, setSupply] = useState(undefined);
-  let [name, setName] = useState("");
+  let [supply, setSupply] = useState<number | undefined>(undefined);
   let history = useHistory();
   let storage = localStorage.getItem("coin");
   let coin = storage
@@ -18,8 +17,7 @@ function NavBar() {
   useEffect(() => {
     if (coin) {
       tokenClient.coinInfo(coin.Mint).then((info) => {
-        setSupply(info.Supply);
-        setName("My Coin Name");
+        setSupply(info.Supply / Math.pow(10, coin.Decimals));
       });
     }
   });
