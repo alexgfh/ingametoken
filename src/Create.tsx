@@ -28,14 +28,12 @@ function generateUUID() {
 
 function Create() {
   let [key, setKey] = useState("");
+  let [mint, setMint] = useState("");
   function generateToken() {
-    let key = generateUUID();
-    key = "Creating...";
-    setKey(key);
     tokenClient.createCoin().then((data) => {
       localStorage.setItem("coin", JSON.stringify(data));
       setKey(data.Secret);
-      navigator.clipboard.writeText(data.Secret);
+      setMint(data.Mint);
     });
   }
 
@@ -52,11 +50,14 @@ function Create() {
           <div className="CreatedText">
             <p>
               Here's your secret key. Save it as this will never be displayed
-              again. (it's been copied to your clipboard)
+              again:
             </p>
 
             <div>{key}</div>
-            <p>Use it to call the API from your game code.</p>
+            <p>And this is your Mint address (public):</p>
+
+            <div>{mint}</div>
+            <p>Use these to call the API from your game code, as explained in the Tutorial.</p>
           </div>
         )}
       </div>
