@@ -30,11 +30,13 @@ function Create() {
   let [key, setKey] = useState("");
   function generateToken() {
     let key = generateUUID();
-    key = "mysecrethash";
+    key = "Creating...";
     setKey(key);
-    tokenClient
-      .createCoin()
-      .then((data) => localStorage.setItem("coin", JSON.stringify(data)));
+    tokenClient.createCoin().then((data) => {
+      localStorage.setItem("coin", JSON.stringify(data));
+      setKey(data.Secret);
+      navigator.clipboard.writeText(data.Secret);
+    });
   }
 
   return (

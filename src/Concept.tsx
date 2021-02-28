@@ -5,9 +5,13 @@ import NavBar from "./NavBar";
 
 function Burn() {
   const storage = localStorage.getItem("coin");
-  const coin = storage ? JSON.parse(storage) : null;
-  const secret = coin.Secret;
-  const mintAddress = coin.Mint;
+  const coin = storage
+    ? storage != "undefined"
+      ? JSON.parse(storage)
+      : null
+    : null;
+  const secret = coin?.Secret;
+  const mintAddress = coin?.Mint;
   return (
     <div className="Header">
       <NavBar />
@@ -49,15 +53,21 @@ function Burn() {
           </b>{" "}
           from the player:
         </p>
+        {!coin && (
+          <p>
+            Create a new token so the fields here are automatically generated
+            for you
+          </p>
+        )}
         <div>
           <code>https://ingamecoin.xyz/minttoken</code>
         </div>
         <span>With the following parameters:</span>
         <div>
-          <code>hash={secret}</code>
+          <code>hash={secret ?? "<SECRET>"}</code>
         </div>
         <div>
-          <code>mint={mintAddress}</code>
+          <code>mint={mintAddress ?? "<MINT ADDRESS>"}</code>
         </div>
         <div>
           <code>

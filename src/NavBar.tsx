@@ -10,7 +10,11 @@ function NavBar() {
   let [name, setName] = useState("");
   let history = useHistory();
   let storage = localStorage.getItem("coin");
-  let coin = storage ? JSON.parse(storage) : null;
+  let coin = storage
+    ? storage != "undefined"
+      ? JSON.parse(storage)
+      : null
+    : null;
   useEffect(() => {
     if (coin) {
       tokenClient.coinInfo(coin.Mint).then((info) => {
