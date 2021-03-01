@@ -3,6 +3,7 @@ import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import tokenClient from "./browserclient.js";
+import logo from "./logo.png";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function NavBar() {
@@ -24,6 +25,7 @@ function NavBar() {
 
   return (
     <div>
+      {<img src={logo} className="App-logo" alt="logo" />}
       {coin ? (
         <div className="CoinInfo">
           <p>

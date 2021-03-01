@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import React, { useEffect, useState } from "react";
 import "./NavBar.css";
 import "./Burn.css";
 import "./Create.css";
+import burningIcon from "./fire.png";
 import tokenClient from "./browserclient.js";
 import NavBar from "./NavBar";
 
@@ -12,9 +12,9 @@ function Create() {
   const secret = coin ? coin.Secret : "";
   const decimals = coin ? coin.Decimals : 6;
   let [key, setKey] = useState(secret ?? "");
-  let [trigger, setTrigger] = useState(false); // crazy hack to redraw NavBar supply
   let [amount, setAmount] = useState(0);
   let [loading, setLoading] = useState(false);
+  let [displaying, setDisplaying] = useState(false);
 
   function burnToken() {
     setLoading(true);
@@ -22,9 +22,11 @@ function Create() {
     tokenClient
       .burnCoin(cinfo, amount)
       .then((data) => {
-        setLoading(false);
-        setTrigger(!trigger);
-        alert("burned " + amount);
+        setDisplaying(true);
+        setTimeout(() => {
+          setLoading(false);
+          setDisplaying(false);
+        }, 1000);
       })
       .catch(() => alert("failed to burn"));
   }
@@ -32,7 +34,6 @@ function Create() {
   return (
     <div className="Header">
       <NavBar />
-      {/*<img src={logo} className="App-logo" alt="logo" />*/}
       <div className="Input">
         <input
           type="text"
@@ -48,7 +49,12 @@ function Create() {
         />
       </div>
       {loading ? (
-        <i>Burning...</i>
+        <>
+          <img src={burningIcon} className="Animated-logo" alt="logo" />
+          {displaying && (
+            <b style={{ color: "red", marginLeft: "0.5em" }}>Burned {amount}</b>
+          )}
+        </>
       ) : (
         <button className="Button" onClick={burnToken}>
           Burn

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./NavBar.css";
 import "./App.css";
 import "./Create.css";
+import keyIcon from "./key.png";
 import tokenClient from "./browserclient.js";
 import NavBar from "./NavBar";
 
@@ -27,7 +27,7 @@ function Create() {
       <div className="Create">
         {key === "" ? (
           loading ? (
-            <i>Creating...</i>
+            <img src={keyIcon} className="Animated-logo" alt="logo" />
           ) : (
             <button className="Button" onClick={generateToken}>
               Create token

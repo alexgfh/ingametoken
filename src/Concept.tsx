@@ -15,7 +15,6 @@ function Burn() {
   return (
     <div className="Header">
       <NavBar />
-      {/*<img src={logo} className="App-logo" alt="logo" />*/}
       <div className="Concept">
         <p>
           Players can emit tokens from outside your game, into the Solana

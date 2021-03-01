@@ -8,6 +8,19 @@
   border: 1px solid red;
   background-color: wheat;
 }
+.Animated-logo {
+  height: 5vmin;
+  pointer-events: none;
+  margin-left: 1em;
+  user-select: none;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+  margin: 1em;
+  user-select: none;
+}
 
 .NavBarElement {
   user-select: none;
@@ -24,6 +37,7 @@
   margin-left: 1em;
   white-space: nowrap;
   font-weight: bold;
+  user-select: none;
 }
 
 .CoinInfo > p > span {
@@ -41,4 +55,19 @@
 
 ul {
   padding-inline-start: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Animated-logo {
+    animation: Animated-logo-spin infinite 0.5s alternate;
+  }
+}
+
+@keyframes Animated-logo-spin {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
 }
