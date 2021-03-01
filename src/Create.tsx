@@ -3,6 +3,7 @@ import "./NavBar.css";
 import "./App.css";
 import "./Create.css";
 import keyIcon from "./key.png";
+import { Link } from "react-router-dom";
 import tokenClient from "./browserclient.js";
 import NavBar from "./NavBar";
 
@@ -43,7 +44,7 @@ function Create() {
             <div className="Parameter">{mint}</div>
             <p>
               Use these to call the API from your game code, as explained in the{" "}
-              <a href="/concept">Tutorial</a>.
+              <Link to="/concept">Tutorial</Link>.
             </p>
           </div>
         )}
