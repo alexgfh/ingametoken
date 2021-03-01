@@ -6,36 +6,17 @@ import "./Create.css";
 import tokenClient from "./browserclient.js";
 import NavBar from "./NavBar";
 
-/**
- * Function to produce UUID.
- * See: http://stackoverflow.com/a/8809472
- */
-function generateUUID() {
-  var d = new Date().getTime();
-
-  if (window.performance && typeof window.performance.now === "function") {
-    d += performance.now();
-  }
-
-  var uuid = "xxxxxxxx".replace(/[xy]/g, function (c) {
-    var r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-  });
-
-  return uuid;
-}
-
 function Create() {
   let [key, setKey] = useState("");
+  let [mint, setMint] = useState("");
+  let [loading, setLoading] = useState(false);
   function generateToken() {
-    let key = generateUUID();
-    key = "Creating...";
-    setKey(key);
+    setLoading(true);
     tokenClient.createCoin().then((data) => {
+      setLoading(false);
       localStorage.setItem("coin", JSON.stringify(data));
       setKey(data.Secret);
-      navigator.clipboard.writeText(data.Secret);
+      setMint(data.Mint);
     });
   }
 
@@ -45,18 +26,25 @@ function Create() {
       {/*<img src={logo} className="App-logo" alt="logo" />*/}
       <div className="Create">
         {key === "" ? (
-          <button className="Button" onClick={generateToken}>
-            Create token
-          </button>
+          loading ? (
+            <i>Creating...</i>
+          ) : (
+            <button className="Button" onClick={generateToken}>
+              Create token
+            </button>
+          )
         ) : (
           <div className="CreatedText">
-            <p>
-              Here's your secret key. Save it as this will never be displayed
-              again. (it's been copied to your clipboard)
-            </p>
+            <p>Here's your secret key:</p>
 
-            <div>{key}</div>
-            <p>Use it to call the API from your game code.</p>
+            <div className="Parameter">{key}</div>
+            <p>And this is your Mint address (public):</p>
+
+            <div className="Parameter">{mint}</div>
+            <p>
+              Use these to call the API from your game code, as explained in the{" "}
+              <a href="/concept">Tutorial</a>.
+            </p>
           </div>
         )}
       </div>

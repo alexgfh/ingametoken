@@ -16,9 +16,10 @@
   color: black;
   border: 3px solid navy;
   margin: 1em;
-  padding: 0.2em;
+  border-radius: 50px;
   cursor: pointer;
   background-color: lightblue;
+  outline: 0;
 }
 .CreatedText {
   text-align: center;
@@ -28,4 +29,10 @@
 }
 .Button:hover {
   background-color: lightcoral;
+}
+
+.Parameter {
+  background-color: lightgray;
+  border: 1px dotted black;
+  padding: 2px;
 }

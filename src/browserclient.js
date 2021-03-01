@@ -5,7 +5,7 @@ function createCoin() {
     mode: "cors",
     body: JSON.stringify({
       decimals: 6,
-      supply: 1000,
+      supply: 100000,
     }),
     method: "POST",
   })

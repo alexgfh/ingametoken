@@ -34,7 +34,7 @@ function Burn() {
           game server total supply on the database.
         </p>
         <p>
-          To feel the state of your economics, much like the head of a central
+          To feel the state of your economy, much like the head of a central
           bank would manage their country's money supply.
         </p>
         <p>
@@ -60,7 +60,7 @@ function Burn() {
           </p>
         )}
         <div>
-          <code>https://ingamecoin.xyz/minttoken</code>
+          <code>https://api.ingamecoin.xyz/minttoken</code>
         </div>
         <span>With the following parameters:</span>
         <div>
