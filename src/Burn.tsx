@@ -14,12 +14,15 @@ function Create() {
   let [key, setKey] = useState(secret ?? "");
   let [trigger, setTrigger] = useState(false); // crazy hack to redraw NavBar supply
   let [amount, setAmount] = useState(0);
+  let [loading, setLoading] = useState(false);
 
   function burnToken() {
+    setLoading(true);
     let cinfo = { Secret: key, Decimals: decimals };
     tokenClient
       .burnCoin(cinfo, amount)
       .then((data) => {
+        setLoading(false);
         setTrigger(!trigger);
         alert("burned " + amount);
       })
@@ -44,9 +47,13 @@ function Create() {
           onChange={(event) => setAmount(parseFloat(event.target.value))}
         />
       </div>
-      <button className="Button" onClick={burnToken}>
-        Burn
-      </button>
+      {loading ? (
+        <i>Burning...</i>
+      ) : (
+        <button className="Button" onClick={burnToken}>
+          Burn
+        </button>
+      )}
     </div>
   );
 }

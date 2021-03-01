@@ -15,6 +15,7 @@
   border: 3px solid navy;
   margin: 1em;
   padding: 0.2em;
+  border-radius: 50px;
   cursor: pointer;
   background-color: lightblue;
 }
@@ -22,6 +23,16 @@
 .CoinInfo {
   margin-left: 1em;
   white-space: nowrap;
+  font-weight: bold;
+}
+
+.CoinInfo > p > span {
+  color: green;
+  border: 1px solid green;
+  border-radius: 8px;
+  background-color: lightgoldenrodyellow;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .NavBarElement:hover {

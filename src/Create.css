@@ -16,9 +16,10 @@
   color: black;
   border: 3px solid navy;
   margin: 1em;
-  padding: 0.2em;
+  border-radius: 50px;
   cursor: pointer;
   background-color: lightblue;
+  outline: 0;
 }
 .CreatedText {
   text-align: center;

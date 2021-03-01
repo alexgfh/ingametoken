@@ -9,8 +9,11 @@ import NavBar from "./NavBar";
 function Create() {
   let [key, setKey] = useState("");
   let [mint, setMint] = useState("");
+  let [loading, setLoading] = useState(false);
   function generateToken() {
+    setLoading(true);
     tokenClient.createCoin().then((data) => {
+      setLoading(false);
       localStorage.setItem("coin", JSON.stringify(data));
       setKey(data.Secret);
       setMint(data.Mint);
@@ -23,9 +26,13 @@ function Create() {
       {/*<img src={logo} className="App-logo" alt="logo" />*/}
       <div className="Create">
         {key === "" ? (
-          <button className="Button" onClick={generateToken}>
-            Create token
-          </button>
+          loading ? (
+            <i>Creating...</i>
+          ) : (
+            <button className="Button" onClick={generateToken}>
+              Create token
+            </button>
+          )
         ) : (
           <div className="CreatedText">
             <p>Here's your secret key:</p>
