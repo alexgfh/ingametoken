@@ -1,6 +1,5 @@
-
-[![Logo](/src/logo.png?raw=true)](https://www.youtube.com/watch?v=P6Im1mj1RnU)
-
+# In Game Coin  
+<a href="https://www.youtube.com/watch?v=P6Im1mj1RnU"><img src="/src/logo.png?raw=true" width="256" alt="Logo" /></a>
 
 Use [In Game Coin](https://ingamecoin.xyz)​ to easily implement cryptocurrency in your game!  
 Though it's not yet audited for usage at commercial projects, this service is already perfectly suitable for test projects or even hobby projects!
