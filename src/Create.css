@@ -29,3 +29,9 @@
 .Button:hover {
   background-color: lightcoral;
 }
+
+.Parameter {
+  background-color: lightgray;
+  border: 1px dotted black;
+  padding: 2px;
+}

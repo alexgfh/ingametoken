@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
+  margin-left: 1em;
   width: 10em;
   border: 1px solid red;
+  background-color: wheat;
 }
 
 .NavBarElement {
@@ -18,9 +20,14 @@
 }
 
 .CoinInfo {
-  margin-left: 0.5em;
+  margin-left: 1em;
+  white-space: nowrap;
 }
 
 .NavBarElement:hover {
   background-color: lightcoral;
+}
+
+ul {
+  padding-inline-start: 0;
 }

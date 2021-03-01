@@ -2,8 +2,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  padding-left: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
 }
 
 .Concept p {
@@ -11,7 +12,7 @@
   background-color: lightgreen;
   border: 2px solid green;
   width: 22em;
-  margin-right: 3em;
+  margin-inline-end: 5em;
 }
 
 .Instructions > div,
@@ -22,4 +23,15 @@
   background-color: lightgray;
   margin-top: 0.3em;
   margin-bottom: 0.3em;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+html,
+body {
+  overflow-x: auto;
 }

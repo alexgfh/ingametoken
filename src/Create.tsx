@@ -6,26 +6,6 @@ import "./Create.css";
 import tokenClient from "./browserclient.js";
 import NavBar from "./NavBar";
 
-/**
- * Function to produce UUID.
- * See: http://stackoverflow.com/a/8809472
- */
-function generateUUID() {
-  var d = new Date().getTime();
-
-  if (window.performance && typeof window.performance.now === "function") {
-    d += performance.now();
-  }
-
-  var uuid = "xxxxxxxx".replace(/[xy]/g, function (c) {
-    var r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-  });
-
-  return uuid;
-}
-
 function Create() {
   let [key, setKey] = useState("");
   let [mint, setMint] = useState("");
@@ -48,16 +28,16 @@ function Create() {
           </button>
         ) : (
           <div className="CreatedText">
-            <p>
-              Here's your secret key. Save it as this will never be displayed
-              again:
-            </p>
+            <p>Here's your secret key:</p>
 
-            <div>{key}</div>
+            <div className="Parameter">{key}</div>
             <p>And this is your Mint address (public):</p>
 
-            <div>{mint}</div>
-            <p>Use these to call the API from your game code, as explained in the Tutorial.</p>
+            <div className="Parameter">{mint}</div>
+            <p>
+              Use these to call the API from your game code, as explained in the{" "}
+              <a href="/concept">Tutorial</a>.
+            </p>
           </div>
         )}
       </div>
