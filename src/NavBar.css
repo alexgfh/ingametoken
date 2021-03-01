@@ -9,14 +9,14 @@
   background-color: wheat;
 }
 .Animated-logo {
-  height: 5vmin;
+  height: 2em;
   pointer-events: none;
   margin-left: 1em;
   user-select: none;
 }
 
 .App-logo {
-  height: 20vmin;
+  height: 10em;
   pointer-events: none;
   margin: 1em;
   user-select: none;
