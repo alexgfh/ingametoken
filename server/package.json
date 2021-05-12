@@ -1,0 +1,21 @@
+{
+  "name": "ingametoken-server",
+  "version": "1.0.0",
+  "description": "In Game Token",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/spl-token": "^0.1.4",
+    "@solana/spl-token-swap": "^0.1.0",
+    "@solana/web3.js": "^1.10.1",
+    "bs58": "^4.0.1",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1"
+  }
+}
