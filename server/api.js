@@ -48,10 +48,9 @@ server.use(cors.actual)
 var https_options ={};
 var https_server;
 try{
-	if(Settings && Settings.SSL){
 		https_options = {
-			key: fs.readFileSync(Settings.SSL.key),
-			certificate: fs.readFileSync(Settings.SSL.cert)
+			key: fs.readFileSync('/etc/letsencrypt/live/api.ingametoken.xyz/privkey.pem', 'utf8'),
+			certificate: fs.readFileSync('/etc/letsencrypt/live/api.ingametoken.xyz/cert.pem', 'utf8')
 		};
 		https_server = restify.createServer(https_options);	
 		https_server.use(restify.plugins.acceptParser(server.acceptable));
@@ -59,7 +58,6 @@ try{
 		https_server.use(restify.plugins.bodyParser());		
 		https_server.pre(cors.preflight)
 		https_server.use(cors.actual)
-  }
 }
 catch(e){
 	console.log(e);
@@ -112,7 +110,7 @@ async function establishConnection() {
 }
 
 function BurnToken(req,res,next){
-	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://ingamecoin.xyz/burntoken", next);}}catch(e){console.log(e)}		
+	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://api.ingametoken.xyz/burntoken", next);}}catch(e){console.log(e)}		
 	try{req.params = req.body}catch(e){console.log(e);}
 	if(!req.params.amount || !req.params.hash ){
 		res.send(400, "Bad parameters");
@@ -128,7 +126,7 @@ function BurnToken(req,res,next){
 }
 
 function CheckTransfer(req,res,next){
-	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://ingamecoin.xyz/checktransfer", next);}}catch(e){console.log(e)}		
+	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://api.ingametoken.xyz/checktransfer", next);}}catch(e){console.log(e)}		
 	try{req.params = req.body}catch(e){console.log(e);}
 	if(!req.params.tx ){
 		res.send(400, "Bad parameters");
@@ -144,7 +142,7 @@ function CheckTransfer(req,res,next){
 }
 
 function CoinInfo(req,res,next){
-	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://ingamecoin.xyz/coininfo", next);}}catch(e){console.log(e)}		
+	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://api.ingametoken.xyz/coininfo", next);}}catch(e){console.log(e)}		
 	try{req.params = req.body}catch(e){console.log(e);}
 	if(!req.params.mintAddress ){
 		res.send(400, "Bad parameters");
@@ -161,7 +159,8 @@ function CoinInfo(req,res,next){
 
 
 function CreateToken(req,res,next){
-	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://ingamecoin.xyz/createtoken", next);}}catch(e){console.log(e)}		
+	console.log(req.httpVersion);
+	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://api.ingametoken.xyz/createtoken", next);}}catch(e){console.log(e)}		
 	try{req.params = req.body}catch(e){console.log(e);}
 	if(!req.params.decimals || !req.params.supply ){
 		res.send(400, "Bad parameters");
@@ -177,7 +176,7 @@ function CreateToken(req,res,next){
 }	
 
 function MintToken(req,res,next){
-	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://ingamecoin.xyz/minttoken", next);}}catch(e){console.log(e)}		
+	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://api.ingametoken.xyz/minttoken", next);}}catch(e){console.log(e)}		
 	try{req.params = req.body}catch(e){console.log(e);}
 	if(!req.params.mint || (!req.params.to && !req.params.solAddress) || !req.params.amount || !req.params.hash ){
 		res.send(400, "Bad parameters");
@@ -193,7 +192,7 @@ function MintToken(req,res,next){
 }
 
 function UserBalance(req,res,next){
-	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://ingamecoin.xyz/userbalance", next);}}catch(e){console.log(e)}		
+	try{if(Number(req.httpVersion) < 1.1 && https_server ){res.redirect("https://api.ingametoken.xyz/userbalance", next);}}catch(e){console.log(e)}		
 	try{req.params = req.body}catch(e){console.log(e);}
 	if(!req.params.tokenAddress ){
 		res.send(400, "Bad parameters");
@@ -338,8 +337,9 @@ function createIx( funderPubkey,associatedTokenAccountPublicKey,ownerPublicKey,t
 async function createToken(params){
 	if(!connection){connection = await establishConnection();}
 	let decimals = params.decimals;
-	let Settings = JSON.parse(fs.readFileSync("settings.json"));	
-	let key = JSON.parse(Settings.key);
+	let Settings = JSON.parse(fs.readFileSync("settings.json"));
+	console.log(Settings.key);
+	let key = Settings.key;
 	let feePayer = new Account(key);
 	let mintAccount = new Account();
 	let owner = new Account();
