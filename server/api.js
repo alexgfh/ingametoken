@@ -337,7 +337,6 @@ async function createToken(params) {
 	if (!connection) { connection = await establishConnection(); }
 	let decimals = params.decimals;
 	let Settings = JSON.parse(fs.readFileSync("settings.json"));
-	console.log(Settings.key);
 	let key = Settings.key;
 	let feePayer = new Account(key);
 	let mintAccount = new Account();
