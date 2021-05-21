@@ -34,7 +34,6 @@ const server_port = 80;
 var restify = require('restify');
 var http = require('http');
 var https = require('https');
-var serverip = "3.140.246.166";
 var connection;
 
 //http server
@@ -78,7 +77,7 @@ function serve() {
 		Object.keys(apiFunctions).map((key, i) => {
 			https_server.post(key, apiFunctions[key]);
 		});
-		https_server.listen(443, () => { console.log(serverip, ' server %s listening at %s', https_server.name, https_server.url); });
+		https_server.listen(4403, '0.0.0.0', () => { console.log(`server ${https_server.name} listening at ${https_server.url}`) });
 	}
 	else {
 		Object.keys(apiFunctions).map((key, i) => {
@@ -161,7 +160,7 @@ function CoinInfo(req, res, next) {
 function CreateToken(req, res, next) {
 	console.log(req.httpVersion);
 	try { if (Number(req.httpVersion) < 1.1 && https_server) { res.redirect("https://api.ingametoken.xyz/createtoken", next); } } catch (e) { console.log(e) }
-	try { req.params = req.body } catch (e) { console.log(e); }
+	try{req.params = req.body} catch(e){console.log(e)};
 	if (!req.params.decimals || !req.params.supply) {
 		res.send(400, "Bad parameters");
 		return next();
@@ -210,7 +209,7 @@ function UserBalance(req, res, next) {
 async function burnToken(params) {
 	if (!connection) { connection = await establishConnection(); }
 	let Settings = JSON.parse(fs.readFileSync("settings.json"));
-	let key = JSON.parse(Settings.key);
+	let key = Settings.key;
 	let feePayer = new Account(key);
 	let authority = feePayer.publicKey;
 	let amount64 = new Numberu64(params.amount).toBuffer();
