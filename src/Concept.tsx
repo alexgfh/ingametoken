@@ -59,7 +59,7 @@ function Burn() {
           </p>
         )}
         <div>
-          <code>https://api.ingamecoin.xyz/minttoken</code>
+          <code>https://api.ingametoken.xyz/minttoken</code>
         </div>
         <span>With the following parameters:</span>
         <div>
