@@ -458,7 +458,7 @@ function get64Value(array) {
 async function mintToken(params) {
 	if (!connection) { connection = await establishConnection(); }
 	let Settings = JSON.parse(fs.readFileSync("settings.json"));
-	let key = JSON.parse(Settings.key);
+	let key = Settings.key;
 	let feePayer = new Account(key);
 	let authority = feePayer.publicKey;
 	let amount64 = new Numberu64(params.amount).toBuffer();
