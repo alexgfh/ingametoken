@@ -98,7 +98,7 @@ function serve() {
 }
 
 //Connection ///
-let network = "https://testnet.solana.com/"
+let network = "https://solana-api.projectserum.com/"
 async function establishConnection() {
 	//let urlRoot = "https://api.mainnet-beta.solana.com/"
 	let urlRoot = network;
@@ -588,7 +588,7 @@ function fetch(url, options) {
 }
 
 function getTransaction(tx) {
-	return fetch("https://testnet.solana.com/", {
+	return fetch(network, {
 		"headers": { "Content-Type": "application/json" },
 		"body": JSON.stringify({
 			"jsonrpc": "2.0",
