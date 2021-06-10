@@ -24,3 +24,4 @@ yarn-error.log*
 server/*.log
 server/*.pid
 server/settings.json
+server/external_tokens.json
