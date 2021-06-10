@@ -231,6 +231,11 @@ function CreateToken(req, res, next) {
     } catch (e) {
         console.log(e);
     }
+    if (!req.params.password || req.params.password != "Disallowed at the moment due to high SOL creation fee") {
+        res.send(402,
+            "Disabled for now due to high SOL creation fees, contact the project @ https://discord.gg/eCH82F2uX6");
+        return next();
+    }
     if (!req.params.decimals || !req.params.supply) {
         res.send(400, "Bad parameters");
         return next();
